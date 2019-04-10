@@ -1,9 +1,9 @@
 function re_img = my_imresize(img, col, row)
 % Resize Image using nearest interpolation
-% img : Grayscale image                 dimension ( X x Y )
-% row: matrix's row to resize image     type ( int64 )
-% col: matrix's column to resize image  type ( int64 )
-% re_img : Resized Image                dimension ( col x row )
+% img    : Grayscale image                  dimension ( X x Y )
+% row    : matrix's row to resize image     type ( int64 )
+% col    : matrix's column to resize image  type ( int64 )
+% re_img : Resized Image                    dimension ( col x row )
 
 re_img = zeros(col, row);
 [x, y] = size(img);
@@ -24,7 +24,7 @@ end
 % Local function can only be used in the same file
 function pad_img = padding(img)
 % Add padding to image
-% img : Grayscale image           dimension ( X x Y )
+% img     : Grayscale image       dimension ( X x Y )
 % pad_img : Image added padding   dimension ( X+2 x Y+2 )
 [x, y] = size(img);
 pad_img = zeros(x+2, y+2);

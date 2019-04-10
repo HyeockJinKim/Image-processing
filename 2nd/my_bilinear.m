@@ -1,9 +1,9 @@
 function re_img = my_bilinear(img, col, row)
 % Resize Image using bilinear interpolation
-% img : Grayscale image                 dimension ( X x Y )
-% col: matrix's column to resize image  type ( int64 )
-% row: matrix's row to resize image     type ( int64 )
-% re_img : Resized Image                dimension ( col x row )
+% img    : Grayscale image                   dimension ( X x Y )
+% col    : matrix's column to resize image   type ( int64 )
+% row    : matrix's row to resize image      type ( int64 )
+% re_img : Resized Image                     dimension ( col x row )
 
 re_img = zeros(col, row);
 [x, y] = size(img);
