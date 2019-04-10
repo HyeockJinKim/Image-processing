@@ -1,7 +1,8 @@
-function re_image = my_rgb2gray(img)
+function gray = my_rgb2gray(img)
 % Convert rgb image to grayscale image
-% img : RGB image dimension (X x Y x 3)
+% img : RGB image          dimension ( X x Y x 3)
+% gray : GrayScale Image   dimension ( X x Y )
 
-re_image = (img(:,:,1)*0.3+img(:,:,2)*0.6+img(:,:,3)*0.1);
+gray = img(:,:,1)*0.2989 + img(:,:,2)*0.5870 + img(:,:,3)*0.1140;
 
 end
