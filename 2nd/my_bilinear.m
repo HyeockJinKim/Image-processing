@@ -1,21 +1,21 @@
-function re_img = my_bilinear(img, col, row)
+function re_img = my_bilinear(img, height, width)
 % Resize Image using bilinear interpolation
 % img    : Grayscale image                   dimension ( X x Y )
-% col    : matrix's column to resize image   type ( int64 )
-% row    : matrix's row to resize image      type ( int64 )
+% height : heigth of resized image           type ( int64 )
+% width  : width of resized image            type ( int64 )
 % re_img : Resized Image                     dimension ( col x row )
 
-re_img = zeros(col, row);
+re_img = zeros(height, width);
 [x, y] = size(img);
 img = my_padding(img, 1, 'mirror');
-c_p = x/col;
-r_p = y/row;
+h_p = x/height;
+w_p = y/width;
 
-for i = 1:col
-   for j = 1:row
+for i = 1:height
+   for j = 1:width
        % Real value point ( u, v )
-       u = i*c_p +1;
-       v = j*r_p +1;
+       u = i*h_p +1;
+       v = j*w_p +1;
        
        % Integer Value Point
        m = floor(u);

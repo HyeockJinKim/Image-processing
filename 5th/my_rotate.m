@@ -6,26 +6,29 @@ function re_img = my_rotate(img, rad, interpolation)
 
 c = cos(rad);
 s = sin(rad);
+
+% height and width of original Image
 [x, y] = size(img);
 
 % Calculate through the inverse of the rotation matrix
 % because the axis of rotation is at the top of the left.
 f = [c s; -s c];
- 
-col = int64(abs(c*x) + abs(s*y));
-row = int64(abs(c*y) + abs(s*x));
-re_img = zeros(col, col);
 
-half_c = col/2;
-half_r = row/2;
+% height and width of rotated image
+height = int64(abs(c*x) + abs(s*y));
+width = int64(abs(c*y) + abs(s*x));
+re_img = zeros(height, height);
+
+half_h = height/2;
+half_w = width/2;
 half_x = x/2;
 half_y = y/2;
 
 if strcmp(interpolation, 'nearest')
-    for i = 1:col
-       for j = 1:row
+    for i = 1:height
+       for j = 1:width
            % Move image center to 1, 1 and then rotate
-           v = f * double([i-half_c; j-half_r]) + [half_x; half_y];
+           v = f * double([i-half_h; j-half_w]) + [half_x; half_y];
            if v(1) < 1 || v(1) > x || v(2) < 1 || v(2) > y
               continue;
            end
@@ -33,10 +36,10 @@ if strcmp(interpolation, 'nearest')
        end
     end
 elseif strcmp(interpolation, 'bilinear')
-    for i = 1:col
-       for j = 1:row
+    for i = 1:height
+       for j = 1:width
            % Move image center to 1, 1 and then rotate
-           v = f * double([i-half_c;j-half_r]) + [half_x; half_y];
+           v = f * double([i-half_h;j-half_w]) + [half_x; half_y];
            if v(1) < 1 || v(1) > x || v(2) < 1 || v(2) > y
               continue;
            end

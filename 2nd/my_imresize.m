@@ -1,19 +1,19 @@
-function re_img = my_imresize(img, col, row)
+function re_img = my_imresize(img, height, width)
 % Resize Image using nearest interpolation
 % img    : Grayscale image                  dimension ( X x Y )
-% row    : matrix's row to resize image     type ( int64 )
-% col    : matrix's column to resize image  type ( int64 )
+% height : heigth of resized image          type ( int64 )
+% width  : width of resized image           type ( int64 )
 % re_img : Resized Image                    dimension ( col x row )
 
-re_img = zeros(col, row);
+re_img = zeros(height, width);
 [x, y] = size(img);
 img = padding(img);
-r_p = x/col;
-c_p = y/row;
+h_p = x/height;
+w_p = y/width;
 
-for i = 1:col
-   for j = 1:row
-       re_img(i, j) = img(round(i*r_p)+1, round(j*c_p)+1);
+for i = 1:height
+   for j = 1:width
+       re_img(i, j) = img(round(i*h_p)+1, round(j*w_p)+1);
    end
 end
 
