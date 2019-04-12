@@ -3,7 +3,7 @@ function re_img = my_imresize(img, height, width)
 % img    : Grayscale image                  dimension ( X x Y )
 % height : heigth of resized image          type ( int64 )
 % width  : width of resized image           type ( int64 )
-% re_img : Resized Image                    dimension ( col x row )
+% re_img : Resized Image                    dimension ( height x width )
 
 re_img = zeros(height, width);
 [x, y] = size(img);

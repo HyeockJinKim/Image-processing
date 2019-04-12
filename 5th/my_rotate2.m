@@ -1,4 +1,4 @@
-function re_img = my_rotate(img, rad, interpolation)
+function re_img = my_rotate2(img, rad, interpolation)
 % Rotate image by angle radian
 % img    : Grayscale image    dimension ( X x Y )
 % rad    : radian to rotate   type ( double )
@@ -19,17 +19,23 @@ height = int64(abs(c*x) + abs(s*y));
 width = int64(abs(c*y) + abs(s*x));
 re_img = zeros(height, height);
 
-half_h = height/2;
-half_w = width/2;
-half_x = x/2;
-half_y = y/2;
+rad = mod(rad, 2*pi);
+if rad < pi/2
+    p = double([s*y; 0]);
+elseif rad < pi
+    p = double([height; -c*x]);
+elseif rad < 3*pi/2
+    p = double([-c*x; width]);
+else
+    p = double([0; -s*y]);
+end
 
 if strcmp(interpolation, 'nearest')
     for i = 1:height
        for j = 1:width
            % Move image center to 1, 1 and then rotate
-           v = f * double([i-half_h; j-half_w]) + [half_x; half_y];
-           if v(1) < 1 || v(1) > x || v(2) < 1 || v(2) > y
+           v = f * (double([i; j]) - p);
+           if v(1) < 1 || v(1) >= x || v(2) < 1 || v(2) >= y
               continue;
            end
            re_img(i, j) = img(round(v(1)), round(v(2)));
@@ -39,8 +45,8 @@ elseif strcmp(interpolation, 'bilinear')
     for i = 1:height
        for j = 1:width
            % Move image center to 1, 1 and then rotate
-           v = f * double([i-half_h;j-half_w]) + [half_x; half_y];
-           if v(1) < 1 || v(1) > x || v(2) < 1 || v(2) > y
+           v = f * (double([i; j]) - p);
+           if v(1) < 1 || v(1) >= x || v(2) < 1 || v(2) >= y
               continue;
            end
 
