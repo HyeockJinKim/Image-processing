@@ -24,11 +24,11 @@ rad = mod(rad, 2*pi);
 if rad < pi/2
     p = double([s*y; 0]);
 elseif rad < pi
-    p = double([height; -c*x]);
+    p = double([height; -c*y]);
 elseif rad < 3*pi/2
     p = double([-c*x; width]);
 else
-    p = double([0; -s*y]);
+    p = double([0; -s*x]);
 end
 
 if strcmp(interpolation, 'nearest')
