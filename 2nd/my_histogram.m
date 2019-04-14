@@ -10,9 +10,10 @@ pdf = zeros(1, 256);
 % Caculate PDF (Probability Distribution Function)
 for i = 1:x
     for j = 1:y
-        pdf(img(i, j)) = pdf(img(i, j)) + 1;
+        pdf(img(i, j)+1) = pdf(img(i, j)+1) + 1;
     end
 end
+pdf = pdf / sum(pdf);
 
 % Caculate CDF (Cumulative Distribution Function)
 cdf = pdf;
