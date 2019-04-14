@@ -1,4 +1,5 @@
-img = imread('cameraman.tif');
+img = imread('peppers.png');
+img = rgb2gray(img);
 figure, imshow(img);
 
 figure,

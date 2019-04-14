@@ -18,7 +18,7 @@ f = [c s; -s c];
 % height and width of rotated image
 height = int64(abs(c*x) + abs(s*y));
 width = int64(abs(c*y) + abs(s*x));
-re_img = zeros(height, height);
+re_img = zeros(height, width);
 
 half_h = height/2;
 half_w = width/2;
@@ -41,7 +41,7 @@ elseif strcmp(interpolation, 'bilinear')
        for j = 1:width
            % Move image center to 1, 1 and then rotate
            v = f * double([i-half_h;j-half_w]) + [half_x; half_y];
-           if v(1) < 1 || v(1) > x || v(2) < 1 || v(2) > y
+           if v(1) <= 1 || v(1) >= x || v(2) <= 1 || v(2) >= y
               continue;
            end
 

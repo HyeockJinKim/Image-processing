@@ -17,7 +17,7 @@ f = [c -s; s c];
 % height and width of rotated image
 height = int64(abs(c*x) + abs(s*y));
 width = int64(abs(c*y) + abs(s*x));
-re_img = zeros(height, height);
+re_img = zeros(height, width);
 
 half_h = height/2;
 half_w = width/2;

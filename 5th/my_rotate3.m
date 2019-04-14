@@ -15,14 +15,16 @@ s = sin(rad);
 % because the axis of rotation is at the top of the left.
 f = [c s; -s c];
 
+% find min value of rotated image using four point
+four = [c -s; s c] * [0 x 0 x; 0 0 y y];
+min_h = min(four(1,:));
+min_w = min(four(2,:));
+p = [min_h; min_w];
+
 % height and width of rotated image
 height = int64(abs(c*x) + abs(s*y));
 width = int64(abs(c*y) + abs(s*x));
-re_img = zeros(height, height);
-
-% find min value of rotated image using four point
-four = [c -s; s c] * [0 x 0 x; 0 0 y y];
-p = [min(four(1,:)); min(four(2,:))];
+re_img = zeros(height, width);
 
 if strcmp(interpolation, 'nearest')
     for i = 1:height
