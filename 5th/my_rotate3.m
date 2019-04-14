@@ -1,4 +1,4 @@
-function re_img = my_rotate2(img, rad, interpolation)
+function re_img = my_rotate3(img, rad, interpolation)
 % Rotate image by angle radian
 % img           : Grayscale image    dimension ( X x Y )
 % rad           : radian to rotate   type ( double )
@@ -20,22 +20,15 @@ height = int64(abs(c*x) + abs(s*y));
 width = int64(abs(c*y) + abs(s*x));
 re_img = zeros(height, height);
 
-rad = mod(rad, 2*pi);
-if rad < pi/2
-    p = double([s*y; 0]);
-elseif rad < pi
-    p = double([height; -c*x]);
-elseif rad < 3*pi/2
-    p = double([-c*x; width]);
-else
-    p = double([0; -s*y]);
-end
+% find min value of rotated image using four point
+four = [c -s; s c] * [0 x 0 x; 0 0 y y];
+p = [min(four(1,:)); min(four(2,:))];
 
 if strcmp(interpolation, 'nearest')
     for i = 1:height
        for j = 1:width
            % Move image center to 1, 1 and then rotate
-           v = f * (double([i; j]) - p);
+           v = f * (double([i; j]) + p);
            if v(1) < 1 || v(1) >= x || v(2) < 1 || v(2) >= y
               continue;
            end
@@ -46,7 +39,7 @@ elseif strcmp(interpolation, 'bilinear')
     for i = 1:height
        for j = 1:width
            % Move image center to 1, 1 and then rotate
-           v = f * (double([i; j]) - p);
+           v = f * (double([i; j]) + p);
            if v(1) < 1 || v(1) >= x || v(2) < 1 || v(2) >= y
               continue;
            end

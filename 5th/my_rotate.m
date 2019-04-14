@@ -1,8 +1,9 @@
 function re_img = my_rotate(img, rad, interpolation)
 % Rotate image by angle radian
-% img    : Grayscale image    dimension ( X x Y )
-% rad    : radian to rotate   type ( double )
-% re_img : Rotated Image      dimension ( height x width )
+% img           : Grayscale image    dimension ( X x Y )
+% rad           : radian to rotate   type ( double )
+% interpolation : interpolation      {'nearest', 'bilinear'}
+% re_img        : Rotated Image      dimension ( height x width )
 
 c = cos(rad);
 s = sin(rad);
