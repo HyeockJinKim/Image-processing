@@ -37,7 +37,7 @@ elseif strcmp(type, 'laplacian')
     % Laplacian Filter
     
     mask = ones(filter_size);
-    mask(pad_size, pad_size) = -filter_size*filter_size;
+    mask(pad_size+1, pad_size+1) = -filter_size*filter_size+1;
     
     for i = 1:x
        for j = 1:y
@@ -74,7 +74,7 @@ elseif strcmp(type, 'unsharp')
     k = 0.3;
     
     mask = -ones(filter_size)/filter_size^2 * k;
-    mask(pad_size, pad_size) = mask(pad_size, pad_size) + 1;
+    mask(pad_size+1, pad_size+1) = mask(pad_size+1, pad_size+1) + 1;
     mask = mask / sum(sum(mask));
     
     for i = 1:x
