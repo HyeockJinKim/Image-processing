@@ -1,3 +1,5 @@
+close all
+
 img = imread('cameraman.tif');
 figure, imshow(img);
 

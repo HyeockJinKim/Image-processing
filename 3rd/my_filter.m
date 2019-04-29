@@ -37,7 +37,7 @@ elseif strcmp(type, 'laplacian')
     % Laplacian Filter
     
     mask = ones(filter_size);
-    mask(pad_size, pad_size) = -filter_size*filter_size+1;
+    mask(pad_size, pad_size) = -filter_size*filter_size;
     
     for i = 1:x
        for j = 1:y
