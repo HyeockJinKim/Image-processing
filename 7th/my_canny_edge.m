@@ -41,7 +41,7 @@ for i = 2:height+1
             max_value = max([m1, m2, magnitude(i, j)]);
             
             magnitude(i, j) = (max_value == magnitude(i, j)) * magnitude(i, j);
-        else
+        elseif ang < -pi/4
             u = abs(cot(ang));
             m1 = (1-u) * magnitude(i-1, j) + u * magnitude(i-1, j+1);
             m2 = (1-u) * magnitude(i+1, j) + u * magnitude(i+1, j-1);
