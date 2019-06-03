@@ -2,6 +2,7 @@ function closing = my_closing(img, filter)
 % Calculate closing of binary image
 % img     : binary image
 % filter  : filter for closing
+% closing : result of closing
 
 [height, width] = size(img);
 [y, x] = size(filter);
@@ -9,6 +10,7 @@ closing = zeros(height, width);
 pad_y = floor(y/2);
 pad_x = floor(x/2);
 
+% Apply closing
 for i = 1:height-y+1
     for j = 1:width-x+1
         if img(i+pad_y,j+pad_x)
