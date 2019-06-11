@@ -2,7 +2,7 @@ function block = my_decode_zigzag(zigzag)
 % Decode Zigzag
 % zigzag : 
 
-block = double(zeros(8));
+block = zeros(8);
 index = 1;
 for i = 1:8
     if mod(i, 2) == 0

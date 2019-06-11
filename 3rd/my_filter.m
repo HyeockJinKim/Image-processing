@@ -71,7 +71,7 @@ elseif strcmp(type, 'sobel')
 elseif strcmp(type, 'unsharp')
     % Unsharp mask
     
-    k = 0.3;
+    k = 0.7;
     
     mask = -ones(filter_size)/filter_size^2 * k;
     mask(pad_size+1, pad_size+1) = mask(pad_size+1, pad_size+1) + 1;

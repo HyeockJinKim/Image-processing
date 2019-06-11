@@ -1,4 +1,4 @@
-% close all
+close all
 
 img = imread('Lenna.png');
 img = rgb2gray(img);

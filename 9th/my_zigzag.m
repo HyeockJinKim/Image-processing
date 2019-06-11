@@ -33,9 +33,14 @@ end
 for i = 64:-1:1
     if zigzag.get(i) ~= 0
         zigzag = zigzag.cut(i);
+        % if 1D matrix is needed.
+        % zigzag = zigzag.add(NaN);
+        % zigzag = zigzag.list;
         return;
     end
 end
+% zigzag = zigzag.add(NaN);
+% zigzag = zigzag.list;
 
 end
 

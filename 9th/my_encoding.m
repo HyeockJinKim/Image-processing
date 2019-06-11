@@ -1,7 +1,7 @@
 function zigzag = my_encoding(img)
 % Compress Image
 % img    : GrayScale Image     dimension ( height x width )
-% zigzag : 
+% zigzag : result of zigzag scanning
 
 [height, width] = size(img);
 
