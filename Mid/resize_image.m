@@ -7,7 +7,7 @@ function re_img = resize_image(img, height, width)
 
 re_img = zeros(height, width);
 [x, y] = size(img);
-img = my_padding(img, 1, 'mirror');
+img = padding(img, 1);
 h_p = x/height;
 w_p = y/width;
 
